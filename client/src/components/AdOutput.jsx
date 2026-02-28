@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Download, Copy, Check, Play, Hash, Loader2, Video, Image as ImageIcon, Shuffle, Palette, Layout } from 'lucide-react'
+import { Download, Copy, Check, Play, Hash, Loader2, Video, Image as ImageIcon, Shuffle, Palette, Layout, Phone, MapPin, Mail } from 'lucide-react'
 import html2canvas from 'html2canvas'
 import { generateImageWithGemini, generateVideoWithVeo3, checkPuterReady } from '../utils/puterUtils'
 import { getRandomTheme, getAllThemes } from '../utils/themes'
@@ -334,26 +334,26 @@ export default function AdOutput({ adData, formData }) {
             fontFamily: currentTheme.font === 'serif' ? 'serif' : currentTheme.font === 'mono' ? 'monospace' : 'sans-serif',
           }}
         >
-          <div className={`h-full flex flex-col justify-between p-8 relative ${currentTheme.layout === 'left' ? 'text-left' : 'text-center'}`}>
+          <div className={`h-full flex flex-col justify-between p-6 relative ${currentTheme.layout === 'left' ? 'text-left' : 'text-center'}`}>
             {/* Top Section */}
             <div>
-              <div className="text-sm font-semibold opacity-80 uppercase tracking-wider mb-2">
+              <div className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-1">
                 {adData.posterData.businessType}
               </div>
-              <h2 className="text-4xl font-bold mb-6 leading-tight">
+              <h2 className="text-2xl font-bold leading-tight">
                 {adData.posterData.businessName}
               </h2>
             </div>
 
             {/* Middle Section */}
-            <div className="py-8">
+            <div className="py-3">
               {adData.posterData.posterText && adData.posterData.posterText.length > 0 ? (
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {adData.posterData.posterText.map((line, index) => (
                     <div 
                       key={index}
                       className={`font-black uppercase leading-tight ${
-                        index === 0 ? 'text-6xl' : 'text-4xl'
+                        index === 0 ? 'text-3xl' : 'text-2xl'
                       } ${index > 0 ? 'opacity-90' : ''}`}
                       style={{
                         textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
@@ -365,32 +365,48 @@ export default function AdOutput({ adData, formData }) {
                   ))}
                 </div>
               ) : (
-                <div className="text-5xl font-black mb-4">
+                <div className="text-3xl font-black mb-2">
                   SPECIAL OFFER
                 </div>
               )}
-              <div className="text-2xl font-bold whitespace-pre-line mt-6 opacity-90">
+              <div className="text-lg font-bold whitespace-pre-line mt-3 opacity-90">
                 {adData.posterData.productName}
               </div>
             </div>
 
             {/* Bottom Section */}
             <div>
-              <div className="text-lg font-semibold mb-2">
+              <div className="text-sm font-semibold mb-2 px-3 py-1 rounded inline-block" style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
                 {adData.cta}
               </div>
-              <div className="text-sm opacity-80 space-y-1">
-                {formData?.phone && (
-                  <div>📱 {formData.phone}</div>
+              <div className="text-xs opacity-90 space-y-1 mt-1">
+                {formData?.phone ? (
+                  <div className="flex items-center gap-1 justify-center">
+                    <Phone className="w-3 h-3 flex-shrink-0" />
+                    <span>{formData.phone}</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1 justify-center">
+                    <Phone className="w-3 h-3 flex-shrink-0" />
+                    <span>Contact Us Today</span>
+                  </div>
                 )}
-                {formData?.address && (
-                  <div>📍 {formData.address}</div>
+                {formData?.address ? (
+                  <div className="flex items-center gap-1 justify-center">
+                    <MapPin className="w-3 h-3 flex-shrink-0" />
+                    <span className="truncate max-w-[90%]">{formData.address}</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1 justify-center">
+                    <MapPin className="w-3 h-3 flex-shrink-0" />
+                    <span>Visit Our Store</span>
+                  </div>
                 )}
                 {formData?.email && (
-                  <div>✉️ {formData.email}</div>
-                )}
-                {!formData?.phone && !formData?.address && !formData?.email && (
-                  <div>📱 Contact Us Today | 📍 Visit Our Store</div>
+                  <div className="flex items-center gap-1 justify-center">
+                    <Mail className="w-3 h-3 flex-shrink-0" />
+                    <span className="truncate max-w-[90%]">{formData.email}</span>
+                  </div>
                 )}
               </div>
             </div>
