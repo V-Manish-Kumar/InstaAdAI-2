@@ -1,4 +1,4 @@
-import { Sparkles, Zap, Clock, TrendingUp, Star, Check, ArrowRight, MessageCircle, Image as ImageIcon, Video } from 'lucide-react'
+import { Sparkles, Zap, Clock, TrendingUp, ArrowRight, MessageCircle, Image as ImageIcon, Video } from 'lucide-react'
 
 export default function LandingPage({ onNavigate, onNavigateToChatbot, onNavigateToImageGen, onNavigateToVideoGen }) {
   return (
@@ -151,88 +151,6 @@ export default function LandingPage({ onNavigate, onNavigateToChatbot, onNavigat
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Simple Pricing
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              Start free, upgrade when you need more
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <PricingCard
-              name="Free"
-              price="$0"
-              features={[
-                '5 ads per month',
-                'Basic templates',
-                'Standard quality',
-                'Watermark included'
-              ]}
-            />
-            <PricingCard
-              name="Pro"
-              price="$19"
-              features={[
-                'Unlimited ads',
-                'All premium templates',
-                'HD quality',
-                'No watermark',
-                'Priority support'
-              ]}
-              popular={true}
-            />
-            <PricingCard
-              name="Business"
-              price="$49"
-              features={[
-                'Everything in Pro',
-                'Custom branding',
-                'API access',
-                'Team collaboration',
-                'White-label option'
-              ]}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Loved by Small Businesses
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <TestimonialCard
-              name="Sarah Johnson"
-              business="Sarah's Cafe"
-              text="I used to spend hours on Canva. Now I create beautiful ads in minutes!"
-              rating={5}
-            />
-            <TestimonialCard
-              name="Mike Chen"
-              business="TechFix Electronics"
-              text="The AI understands my business perfectly. Our social media engagement doubled!"
-              rating={5}
-            />
-            <TestimonialCard
-              name="Priya Sharma"
-              business="Glamour Salon"
-              text="As a salon owner, I have no time for design. This tool is a lifesaver!"
-              rating={5}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
@@ -325,47 +243,3 @@ function StepCard({ number, title, description }) {
   )
 }
 
-function PricingCard({ name, price, features, popular }) {
-  return (
-    <div className={`card ${popular ? 'ring-2 ring-primary-500 scale-105' : ''} hover:shadow-2xl transition-all duration-300`}>
-      {popular && (
-        <div className="bg-primary-600 text-white text-sm font-semibold px-3 py-1 rounded-full inline-block mb-4">
-          Most Popular
-        </div>
-      )}
-      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{name}</h3>
-      <div className="mb-6">
-        <span className="text-4xl font-bold text-gray-900 dark:text-white">{price}</span>
-        <span className="text-gray-600 dark:text-gray-400">/month</span>
-      </div>
-      <ul className="space-y-3 mb-6">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
-            <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <button className={popular ? 'btn-primary w-full' : 'btn-secondary w-full'}>
-        Get Started
-      </button>
-    </div>
-  )
-}
-
-function TestimonialCard({ name, business, text, rating }) {
-  return (
-    <div className="card hover:shadow-xl transition-all duration-300">
-      <div className="flex gap-1 mb-4">
-        {[...Array(rating)].map((_, i) => (
-          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-        ))}
-      </div>
-      <p className="text-gray-600 dark:text-gray-300 mb-4 italic">"{text}"</p>
-      <div>
-        <div className="font-semibold text-gray-900 dark:text-white">{name}</div>
-        <div className="text-sm text-gray-500 dark:text-gray-400">{business}</div>
-      </div>
-    </div>
-  )
-}
