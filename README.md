@@ -2,6 +2,9 @@
 
 ![InstaAd AI](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Live](https://img.shields.io/badge/Live-Vercel-brightgreen.svg)
+
+**Live Demo: [https://insta-ad-ai-2.vercel.app/](https://insta-ad-ai-2.vercel.app/)**
 
 **Create Posters, Images & Videos for Your Business in Minutes**
 
