@@ -1,4 +1,4 @@
-import { Sparkles, Zap, Clock, TrendingUp, ArrowRight, MessageCircle, Image as ImageIcon, Video } from 'lucide-react'
+import { Sparkles, Zap, Clock, TrendingUp, Star, ArrowRight, MessageCircle, Image as ImageIcon, Video } from 'lucide-react'
 
 export default function LandingPage({ onNavigate, onNavigateToChatbot, onNavigateToImageGen, onNavigateToVideoGen }) {
   return (
